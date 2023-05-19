@@ -1,31 +1,4 @@
-import { createToggleViewBtn } from './components/toggleViewBtn';
-
-function createGPTXtendContainer() {
-    const gptXtendContainer = document.createElement('div');
-    gptXtendContainer.innerText = 'GPTXtend';
-    gptXtendContainer.classList.add('gpt-x-container', 'hidden');
-    return gptXtendContainer;
-}
-
-function insertElements() {
-    const sendTextBtn = document.querySelector(
-        "textarea[tabindex='0']"
-    )?.nextElementSibling;
-
-    const textBoxContainer = document.querySelector(
-        "textarea[tabindex='0']"
-    )?.parentElement;
-
-    const responseContainer = textBoxContainer?.parentNode;
-
-    const gptXtendContainer = createGPTXtendContainer();
-
-    const toggleViewBtn = createToggleViewBtn(gptXtendContainer);
-
-    responseContainer?.firstChild?.appendChild(gptXtendContainer);
-
-    sendTextBtn?.parentElement?.insertBefore(toggleViewBtn, sendTextBtn);
-}
+import { insertElementsToGPT } from './utils/insertElements';
 
 // Module: Main
 function initializeExtension() {
@@ -39,7 +12,7 @@ function initializeExtension() {
                 const gptXtend = document.querySelector('.gpt-x-container');
 
                 if (textBoxContainer && !gptXtend) {
-                    insertElements();
+                    insertElementsToGPT();
                     break;
                 }
             }
