@@ -1,5 +1,5 @@
 import { insertElementsToGPT } from './utils/insertElements';
-import { submitConversation } from './utils/submitInput';
+import { handleChunkInput } from './utils/splitAndSend';
 
 // Module: Main
 function initializeExtension() {
@@ -18,12 +18,7 @@ function initializeExtension() {
                         // event.stopPropagation();
                         if (event.key === 'Enter' && event.altKey) {
                             // event.preventDefault();
-                            // submitConversation({
-                            //     chunkNumber: 0,
-                            //     startPrompt: 'Text',
-                            //     text: 'Whatever',
-                            //     endPrompt: 'Video',
-                            // });
+                            handleChunkInput();
                             console.log('Alt + Enter pressed on Container');
                         }
                     }
