@@ -17,7 +17,8 @@
     "content_scripts": [
         {
             "matches": ["*://chat.openai.com/*", "*://*.chat.openai.com/*"],
-            "js": ["js/vendor.js", "js/content_script.js"]
+            "js": ["js/vendor.js", "js/content_script.js"],
+            "css": ["style.css"]
         }
     ],
 

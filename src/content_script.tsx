@@ -1,10 +1,5 @@
 import { createOpenEyeSVG } from './components/EyeOpen';
 
-interface ElementObject {
-    element: HTMLElement | SVGElement;
-    position: 'before' | 'after';
-}
-
 // Module: Main
 function initializeExtension() {
     const observer = new MutationObserver((mutationsList) => {
@@ -16,19 +11,45 @@ function initializeExtension() {
 
                 const responseContainer = textBoxContainer?.parentNode;
 
-                console.log('responseContainer', responseContainer);
+                const sendText = document.querySelector(
+                    "textarea[tabindex='0']"
+                )?.nextElementSibling;
 
                 const gptXtend = responseContainer?.querySelector(
                     '.gptxtend-container'
                 );
 
                 if (textBoxContainer && !gptXtend) {
+                    const icon1 = createOpenEyeSVG();
+                    const icon2 = createOpenEyeSVG();
+
                     const newGPTXtend = document.createElement('div');
                     newGPTXtend.classList.add('gptxtend-container');
-                    newGPTXtend.appendChild(createOpenEyeSVG());
+                    newGPTXtend.appendChild(icon1);
 
-                    responseContainer?.prepend(newGPTXtend);
-                    observer.disconnect(); // Stop observing mutations after the desired mutation occurs
+                    responseContainer?.firstChild?.appendChild(newGPTXtend);
+
+                    const showGPTXtend = document.createElement('button');
+                    showGPTXtend.classList.add(
+                        'absolute',
+                        'p-1',
+                        'text-gray-500',
+                        'enabled:dark:hover:text-gray-400',
+                        'disabled:hover:bg-transparent',
+                        'dark:disabled:hover:bg-transparent',
+                        'right-1',
+                        'md:right-1',
+                        'disabled:opacity-40'
+                    );
+
+                    showGPTXtend.style.right = '0px';
+                    showGPTXtend.appendChild(icon2);
+
+                    sendText?.parentElement?.insertBefore(
+                        showGPTXtend,
+                        sendText
+                    );
+
                     break;
                 }
             }
