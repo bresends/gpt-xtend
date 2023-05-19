@@ -1,11 +1,5 @@
 .hidden {
     display: none;
-    opacity: 0;
-}
-
-.gpt-x-container {
-    width: 99%;
-    opacity: 1;
 }
 
 #gpt-x-toggle-view-btn {
