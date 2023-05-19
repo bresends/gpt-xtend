@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 .gptxtend-container {
     width: 99%;
 }

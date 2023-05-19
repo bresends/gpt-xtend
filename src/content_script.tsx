@@ -1,32 +1,10 @@
-import { createOpenEyeSVG } from './components/EyeOpen';
+import { createToggleViewBtn } from './components/toggleViewBtn';
 
 function createGPTXtendContainer() {
     const gptXtendContainer = document.createElement('div');
     gptXtendContainer.innerText = 'GPTXtend';
     gptXtendContainer.classList.add('gptxtend-container');
     return gptXtendContainer;
-}
-
-function createToggleViewBtn() {
-    const openEyeSVG = createOpenEyeSVG();
-
-    const showGPTXtendContainer = document.createElement('button');
-
-    showGPTXtendContainer.classList.add(
-        'absolute',
-        'p-1',
-        'text-gray-500',
-        'enabled:dark:hover:text-gray-400',
-        'disabled:hover:bg-transparent',
-        'dark:disabled:hover:bg-transparent',
-        'right-1',
-        'md:right-1',
-        'disabled:opacity-40'
-    );
-
-    showGPTXtendContainer.appendChild(openEyeSVG);
-
-    return showGPTXtendContainer;
 }
 
 function insertElements() {
@@ -41,7 +19,8 @@ function insertElements() {
     const responseContainer = textBoxContainer?.parentNode;
 
     const gptXtendContainer = createGPTXtendContainer();
-    const toggleViewBtn = createToggleViewBtn();
+
+    const toggleViewBtn = createToggleViewBtn(gptXtendContainer);
 
     responseContainer?.firstChild?.appendChild(gptXtendContainer);
 
