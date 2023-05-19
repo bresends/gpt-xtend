@@ -5,7 +5,7 @@ export function createOpenEyeSVG() {
     svg.setAttribute('viewBox', '0 0 24 24');
     svg.setAttribute('stroke-width', '1.5');
     svg.setAttribute('stroke', 'currentColor');
-    svg.setAttribute('class', 'w-6 h-6');
+    svg.setAttribute('class', 'w-5 h-5');
 
     const path1 = document.createElementNS(
         'http://www.w3.org/2000/svg',

@@ -3,7 +3,7 @@ import { createToggleViewBtn } from './components/toggleViewBtn';
 function createGPTXtendContainer() {
     const gptXtendContainer = document.createElement('div');
     gptXtendContainer.innerText = 'GPTXtend';
-    gptXtendContainer.classList.add('gptxtend-container');
+    gptXtendContainer.classList.add('gpt-x-container');
     return gptXtendContainer;
 }
 
@@ -36,7 +36,7 @@ function initializeExtension() {
                     "textarea[tabindex='0']"
                 )?.parentElement;
 
-                const gptXtend = document.querySelector('.gptxtend-container');
+                const gptXtend = document.querySelector('.gpt-x-container');
 
                 if (textBoxContainer && !gptXtend) {
                     insertElements();
