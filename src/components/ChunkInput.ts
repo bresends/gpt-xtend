@@ -21,7 +21,8 @@ export function createChunkInput() {
     const decrementButtonSpan = document.createElement('span');
     decrementButtonSpan.textContent = '−';
     decrementButton.appendChild(decrementButtonSpan);
-    decrementButton.addEventListener('click', () => {
+    decrementButton.addEventListener('click', (event: MouseEvent) => {
+        event.stopPropagation();
         const oldValue = parseInt(input.value);
         if (oldValue < 2500) return;
         const newValue = oldValue - 2500;
@@ -30,6 +31,8 @@ export function createChunkInput() {
 
     const input = document.createElement('input');
     input.setAttribute('type', 'number');
+    input.setAttribute('readonly', 'true');
+
     input.id = 'custom-input-number';
     input.classList.add(
         'font-semibold',
@@ -52,7 +55,8 @@ export function createChunkInput() {
 
     incrementButton.appendChild(incrementButtonSpan);
 
-    incrementButton.addEventListener('click', () => {
+    incrementButton.addEventListener('click', (event: MouseEvent) => {
+        event.stopPropagation();
         const oldValue = parseInt(input.value);
         if (oldValue >= 20000) return;
 
