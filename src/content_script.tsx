@@ -15,11 +15,8 @@ function initializeExtension() {
                 textArea?.addEventListener(
                     'keydown',
                     (event: KeyboardEvent) => {
-                        // event.stopPropagation();
                         if (event.key === 'Enter' && event.altKey) {
-                            // event.preventDefault();
                             handleChunkInput();
-                            console.log('Alt + Enter pressed on Container');
                         }
                     }
                 );

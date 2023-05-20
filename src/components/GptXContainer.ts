@@ -1,4 +1,5 @@
 import { createPrompt } from './Prompt';
+import { createSendBtn } from './sendBtn';
 
 export function createGPTXtendContainer() {
     const gptXtendContainer = document.createElement('div');
@@ -13,9 +14,11 @@ export function createGPTXtendContainer() {
 
     const promptStart = createPrompt('Prompt Start', 'Video Summary:');
     const promptEnd = createPrompt('Prompt End', 'VIDEO SUMMARY:');
+    const sendBtn = createSendBtn();
 
     gptXtendContainer.appendChild(promptStart);
     gptXtendContainer.appendChild(promptEnd);
+    gptXtendContainer.appendChild(sendBtn);
 
     return gptXtendContainer;
 }
