@@ -41,7 +41,7 @@ export function createChunkInput() {
         'text-white'
     );
 
-    input.setAttribute('value', '2500');
+    input.setAttribute('value', '12500');
 
     const incrementButton = document.createElement('button');
 
