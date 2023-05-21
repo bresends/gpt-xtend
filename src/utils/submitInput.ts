@@ -21,7 +21,7 @@ export function submitConversation({
         keyCode: 13,
     });
 
-    if (!textarea || !textarea.value) return;
+    if (!textarea) return;
 
     textarea.value = `${startPrompt}\n\nTranscript Part: ${chunkNumber}: ${text}\n\n${endPrompt}`;
     textarea.dispatchEvent(enterKeyEvent);

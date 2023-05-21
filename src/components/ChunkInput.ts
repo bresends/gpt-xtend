@@ -1,7 +1,7 @@
 export function createChunkInput() {
     const container = document.createElement('div');
     container.classList.add('hidden');
-    container.id = 'chunk-input';
+    container.id = 'chunk-input-container';
 
     const label = document.createElement('label');
     label.classList.add('text-white', 'text-sm');
@@ -11,7 +11,7 @@ export function createChunkInput() {
     const inputContainer = document.createElement('div');
     inputContainer.classList.add('flex', 'flex-row');
 
-    const decrementButton = document.createElement('button');
+    const decrementButton = document.createElement('span');
     decrementButton.classList.add(
         'text-white',
         'cursor-pointer',
@@ -33,7 +33,7 @@ export function createChunkInput() {
     input.setAttribute('type', 'number');
     input.setAttribute('readonly', 'true');
 
-    input.id = 'custom-input-number';
+    input.id = 'chunk-input-number';
     input.classList.add(
         'font-semibold',
         'text-md',
@@ -41,9 +41,9 @@ export function createChunkInput() {
         'text-white'
     );
 
-    input.setAttribute('value', '12500');
+    input.setAttribute('value', '2500');
 
-    const incrementButton = document.createElement('button');
+    const incrementButton = document.createElement('span');
 
     incrementButton.setAttribute('data-action', 'increment');
 

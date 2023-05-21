@@ -9,11 +9,26 @@ export function textToChunks(text: string, chunkSize: number): string[] {
     return chunks;
 }
 
+function observeRemoval(target: Element): Promise<void> {
+    return new Promise((resolve) => {
+        const observer = new MutationObserver((mutationsList, observer) => {
+            for (const mutation of mutationsList) {
+                if (
+                    mutation.removedNodes.length > 0 &&
+                    !document.contains(target)
+                ) {
+                    observer.disconnect();
+                    resolve();
+                    return;
+                }
+            }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
+}
+
 export async function handleChunkInput() {
-    // progressBar,
-    // chunkSizeInput,
-    // startPromptInput,
-    // endPromptInput
     function isChatGptReady() {
         // If not present, the GPT can be assumed to be ready
         const gptIsProcessingSVG = document.querySelector(
@@ -25,34 +40,53 @@ export async function handleChunkInput() {
     const textarea = document.querySelector(
         "textarea[tabindex='0']"
     ) as HTMLTextAreaElement;
+    const progressBar = document.querySelector(
+        '.progress-bar'
+    ) as HTMLDivElement;
 
-    const fullText = textarea?.value;
+    const chunkSizeInput = document.querySelector(
+        '#chunk-input-number'
+    ) as HTMLInputElement;
 
-    const chunks = textToChunks(fullText, 12000);
+    const startPromptInput = document.querySelector(
+        '#prompt-start'
+    ) as HTMLInputElement;
 
-    // const startPrompt = startPromptInput.value;
-    // const endPrompt = endPromptInput.value;
+    const endPromptInput = document.querySelector(
+        '#prompt-end'
+    ) as HTMLInputElement;
 
-    // const chunkSize = parseInt(chunkSizeInput.value);
-    const chunkSize = 12000;
+    const chunks = textToChunks(
+        textarea?.value,
+        parseInt(chunkSizeInput?.value || '12000')
+    );
+
+    const startPrompt = startPromptInput?.value;
+    const endPrompt = endPromptInput?.value;
+
     const numChunks = chunks.length;
 
-    for (let i = 0; i < numChunks; i++) {
-        // if (!isRunning) {
-        //     break;
-        // }
-        const chunk = fullText.slice(i * chunkSize, (i + 1) * chunkSize);
+    const gptIsProcessingSVG = document.querySelector(
+        '.text-2xl > span:not(.invisible)'
+    );
 
-        submitConversation({
-            text: chunk,
-            chunkNumber: i + 1,
-            startPrompt: 'startPrompt',
-            endPrompt: 'endPrompt',
-        });
+    for (let i = 0; i < numChunks; i++) {
+        // submitConversation({
+        //     text: chunks[i],
+        //     chunkNumber: i + 1,
+        //     startPrompt: startPrompt,
+        //     endPrompt: endPrompt,
+        // });
         // progressBar.style.width = `${((i + 1) / numChunks) * 100}%`;
 
-        while (!isChatGptReady()) {
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+        // while (!isChatGptReady()) {
+        //     console.log('Inside While', !isChatGptReady());
+        //     await new Promise((resolve) => setTimeout(resolve, 1000));
+        // }
+
+        while (gptIsProcessingSVG) {
+            console.log('Inside While', gptIsProcessingSVG);
+            await observeRemoval(gptIsProcessingSVG);
         }
     }
 }

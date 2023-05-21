@@ -16,11 +16,23 @@ export function createGPTXtendContainer() {
         'gap-3'
     );
 
-    const promptStart = createPrompt('Prompt Start', 'Video Summary:');
-    const promptEnd = createPrompt('Prompt End', 'VIDEO SUMMARY:');
+    const promptStart = createPrompt(
+        'Prompt Start',
+        'Video Summary:',
+        'prompt-start'
+    );
+
+    const promptEnd = createPrompt(
+        'Prompt End',
+        'VIDEO SUMMARY:',
+        'prompt-end'
+    );
+
     const sendBtn = createSendBtn();
     const configBtn = createConfigBtn();
     const progressBar = createProgressBar();
+
+    progressBar.id = 'progress-bar';
 
     inputsContainer.appendChild(promptStart);
     inputsContainer.appendChild(promptEnd);

@@ -6,7 +6,7 @@ export function createToggleViewBtn(gptXContainer: HTMLDivElement) {
     const openEyeSVG = createOpenEyeSVG();
     const closedEyeSVG = createClosedEyeSVG();
 
-    const showGPTXtendContainer = document.createElement('button');
+    const showGPTXtendContainer = document.createElement('span');
 
     showGPTXtendContainer.classList.add(
         'absolute',
@@ -19,7 +19,8 @@ export function createToggleViewBtn(gptXContainer: HTMLDivElement) {
 
     showGPTXtendContainer.appendChild(openEyeSVG);
 
-    showGPTXtendContainer.addEventListener('click', () => {
+    showGPTXtendContainer.addEventListener('click', (event: MouseEvent) => {
+        event.stopPropagation();
         open = !open;
         gptXContainer.classList.toggle('hidden');
 

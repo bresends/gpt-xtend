@@ -23,7 +23,7 @@ function createSendSVG() {
 }
 
 export function createSendBtn() {
-    const sendBtn = document.createElement('button');
+    const sendBtn = document.createElement('span');
     const sendSVG = createSendSVG();
 
     sendBtn.classList.add(
@@ -44,7 +44,8 @@ export function createSendBtn() {
 
     sendBtn.appendChild(sendSVG);
 
-    sendBtn.addEventListener('click', () => {
+    sendBtn.addEventListener('click', (event: MouseEvent) => {
+        event.stopPropagation();
         handleChunkInput();
     });
 

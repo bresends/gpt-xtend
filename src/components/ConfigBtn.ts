@@ -38,7 +38,7 @@ function createConfigSVG() {
 }
 
 export function createConfigBtn() {
-    const configBtn = document.createElement('button');
+    const configBtn = document.createElement('span');
     const configSVG = createConfigSVG();
     const chunkSizeInput = createChunkInput();
 
@@ -60,7 +60,8 @@ export function createConfigBtn() {
 
     configBtn.appendChild(configSVG);
     configBtn.appendChild(chunkSizeInput);
-    configBtn.addEventListener('click', () => {
+    configBtn.addEventListener('click', (event: MouseEvent) => {
+        event.stopPropagation();
         chunkSizeInput.classList.toggle('hidden');
     });
 

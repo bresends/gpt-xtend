@@ -1,10 +1,11 @@
-export function createPrompt(label: string, defaultValue: string) {
+export function createPrompt(label: string, defaultValue: string, id: string) {
     const promptContainer = document.createElement('div');
     const promptLabel = document.createElement('label');
     const promptInput = document.createElement('input');
 
     promptInput.setAttribute('type', 'text');
     promptInput.setAttribute('value', defaultValue);
+    promptInput.setAttribute('id', id);
 
     promptLabel.innerText = label;
 
