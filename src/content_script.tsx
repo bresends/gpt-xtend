@@ -1,5 +1,4 @@
 import { insertElementsToGPT } from './utils/insertElements';
-import { handleChunkInput } from './utils/splitAndSend';
 
 // Module: Main
 function initializeExtension() {
@@ -11,15 +10,6 @@ function initializeExtension() {
                 ) as HTMLTextAreaElement;
 
                 const textBoxContainer = textArea?.parentElement;
-
-                textArea?.addEventListener(
-                    'keydown',
-                    (event: KeyboardEvent) => {
-                        if (event.key === 'Enter' && event.altKey) {
-                            handleChunkInput();
-                        }
-                    }
-                );
 
                 const gptXtend = document.querySelector('.gpt-x-container');
 

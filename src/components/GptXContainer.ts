@@ -1,12 +1,15 @@
 import { createPrompt } from './Prompt';
 import { createSendBtn } from './SendBtn';
 import { createConfigBtn } from './ConfigBtn';
+import { createProgressBar } from './ProgressBar';
 
 export function createGPTXtendContainer() {
     const gptXtendContainer = document.createElement('div');
+    const inputsContainer = document.createElement('div');
 
-    gptXtendContainer.classList.add(
-        'hidden',
+    gptXtendContainer.classList.add('hidden');
+
+    inputsContainer.classList.add(
         'gpt-x-container',
         'flex',
         'justify-between',
@@ -17,11 +20,15 @@ export function createGPTXtendContainer() {
     const promptEnd = createPrompt('Prompt End', 'VIDEO SUMMARY:');
     const sendBtn = createSendBtn();
     const configBtn = createConfigBtn();
+    const progressBar = createProgressBar();
 
-    gptXtendContainer.appendChild(promptStart);
-    gptXtendContainer.appendChild(promptEnd);
-    gptXtendContainer.appendChild(configBtn);
-    gptXtendContainer.appendChild(sendBtn);
+    inputsContainer.appendChild(promptStart);
+    inputsContainer.appendChild(promptEnd);
+    inputsContainer.appendChild(configBtn);
+    inputsContainer.appendChild(sendBtn);
+
+    gptXtendContainer.appendChild(inputsContainer);
+    gptXtendContainer.appendChild(progressBar);
 
     return gptXtendContainer;
 }
