@@ -9,25 +9,6 @@ export function textToChunks(text: string, chunkSize: number): string[] {
     return chunks;
 }
 
-function observeRemoval(target: Element): Promise<void> {
-    return new Promise((resolve) => {
-        const observer = new MutationObserver((mutationsList, observer) => {
-            for (const mutation of mutationsList) {
-                if (
-                    mutation.removedNodes.length > 0 &&
-                    !document.contains(target)
-                ) {
-                    observer.disconnect();
-                    resolve();
-                    return;
-                }
-            }
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-    });
-}
-
 export async function handleChunkInput() {
     function isChatGptReady() {
         // If not present, the GPT can be assumed to be ready
@@ -66,27 +47,17 @@ export async function handleChunkInput() {
 
     const numChunks = chunks.length;
 
-    const gptIsProcessingSVG = document.querySelector(
-        '.text-2xl > span:not(.invisible)'
-    );
-
     for (let i = 0; i < numChunks; i++) {
-        // submitConversation({
-        //     text: chunks[i],
-        //     chunkNumber: i + 1,
-        //     startPrompt: startPrompt,
-        //     endPrompt: endPrompt,
-        // });
-        // progressBar.style.width = `${((i + 1) / numChunks) * 100}%`;
+        await submitConversation({
+            text: chunks[i],
+            chunkNumber: i + 1,
+            startPrompt: startPrompt,
+            endPrompt: endPrompt,
+        });
+        progressBar.style.width = `${((i + 1) / numChunks) * 100}%`;
 
-        // while (!isChatGptReady()) {
-        //     console.log('Inside While', !isChatGptReady());
-        //     await new Promise((resolve) => setTimeout(resolve, 1000));
-        // }
-
-        while (gptIsProcessingSVG) {
-            console.log('Inside While', gptIsProcessingSVG);
-            await observeRemoval(gptIsProcessingSVG);
+        while (!isChatGptReady()) {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
         }
     }
 }

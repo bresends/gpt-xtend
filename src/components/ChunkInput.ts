@@ -11,7 +11,7 @@ export function createChunkInput() {
     const inputContainer = document.createElement('div');
     inputContainer.classList.add('flex', 'flex-row');
 
-    const decrementButton = document.createElement('span');
+    const decrementButton = document.createElement('button');
     decrementButton.classList.add(
         'text-white',
         'cursor-pointer',
@@ -43,7 +43,7 @@ export function createChunkInput() {
 
     input.setAttribute('value', '2500');
 
-    const incrementButton = document.createElement('span');
+    const incrementButton = document.createElement('button');
 
     incrementButton.setAttribute('data-action', 'increment');
 

@@ -5,7 +5,7 @@ interface SubmitInput {
     endPrompt: string;
 }
 
-export function submitConversation({
+export async function submitConversation({
     text,
     chunkNumber,
     startPrompt,
