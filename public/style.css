@@ -66,4 +66,5 @@ input[type='number']::-webkit-outer-spin-button {
 .prompt-btn {
     background-color: hsl(220, 4%, 13%);
     margin-bottom: 0.25rem;
+    user-select: none;
 }

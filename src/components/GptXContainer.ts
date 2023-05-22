@@ -35,9 +35,21 @@ export function createGPTXtendContainer() {
     const sendBtn = createSendBtn();
     const configBtn = createConfigBtn();
     const progressBar = createProgressBar();
-    const summaryBtn = createPromptBtn({ text: 'Video Summary' });
-    const bulletBtn = createPromptBtn({ text: 'Bullet' });
-    const conciseBtn = createPromptBtn({ text: 'Concise' });
+    const summaryBtn = createPromptBtn({
+        label: 'Video Summary',
+        startText: 'Video Summary:',
+        endText: 'VIDEO SUMMARY:',
+    });
+    const bulletBtn = createPromptBtn({
+        label: 'Bullet List',
+        startText: 'Create a list of bullet items:',
+        endText: 'BULLET LIST:',
+    });
+    const conciseBtn = createPromptBtn({
+        label: 'Concise',
+        startText: 'Create a concise list from this text:',
+        endText: 'CONCISE LIST:',
+    });
 
     progressBar.id = 'progress-bar';
 

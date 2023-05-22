@@ -66,5 +66,14 @@ export function createConfigBtn() {
         chunkSizeInput.classList.toggle('hidden');
     });
 
+    document.addEventListener('click', (event: MouseEvent) => {
+        const isClickedInsideConfigBtn = configBtn.contains(
+            event.target as Node
+        );
+        if (!isClickedInsideConfigBtn) {
+            chunkSizeInput.classList.add('hidden');
+        }
+    });
+
     return configBtn;
 }

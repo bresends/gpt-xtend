@@ -1,35 +1,38 @@
-interface PromptBtnProps {
-    text: string;
-}
-
 function writingSVG() {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('xmlns', svgNS);
     svg.setAttribute('fill', 'none');
     svg.setAttribute('viewBox', '0 0 24 24');
     svg.setAttribute('stroke-width', '1.5');
     svg.setAttribute('stroke', 'currentColor');
     svg.setAttribute('class', 'w-5 h-5');
 
-    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    const path = document.createElementNS(svgNS, 'path');
     path.setAttribute('stroke-linecap', 'round');
     path.setAttribute('stroke-linejoin', 'round');
     path.setAttribute(
         'd',
-        'M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10'
+        'M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 011.037-.443 48.282 48.282 0 005.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z'
     );
 
     svg.appendChild(path);
-
+    svg.style.marginTop = '0.25rem';
     return svg;
 }
 
-export function createPromptBtn({ text }: PromptBtnProps) {
+interface PromptBtnProps {
+    label: string;
+    startText: string;
+    endText: string;
+}
+
+export function createPromptBtn({ label, startText, endText }: PromptBtnProps) {
     const promptBtn = document.createElement('span');
 
     const svg = writingSVG();
 
-    promptBtn.innerText = text;
+    promptBtn.innerText = label;
     promptBtn.classList.add('prompt-btn');
 
     promptBtn.classList.add(
@@ -48,6 +51,14 @@ export function createPromptBtn({ text }: PromptBtnProps) {
 
     promptBtn.addEventListener('click', (event: MouseEvent) => {
         event.stopPropagation();
+        const startPrompt = document.querySelector(
+            '#prompt-start'
+        ) as HTMLInputElement;
+        const endPrompt = document.querySelector(
+            '#prompt-end'
+        ) as HTMLInputElement;
+        startPrompt.value = startText;
+        endPrompt.value = endText;
     });
 
     return promptBtn;
