@@ -51,7 +51,8 @@ export function createConfigBtn() {
         'dark:bg-white/5',
         'p-3',
         'rounded-md',
-        'relative'
+        'relative',
+        'cursor-pointer'
     );
 
     configBtn.style.flex = '1 1 0%';

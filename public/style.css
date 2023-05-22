@@ -18,7 +18,7 @@
     width: 0%;
     height: 0.25rem;
     border-radius: 2px;
-    background: #353740;
+    background: hsl(232, 11%, 55%);
     transition: width 0.5s ease-in-out;
 }
 
@@ -48,10 +48,11 @@ input[type='number']::-webkit-outer-spin-button {
     outline: none !important;
 }
 
-#chunk-input-container button:focus {
-    outline: none !important;
-}
-
 #chunk-input-container button {
     padding: 0 1rem;
+    background-color: rgba(63, 65, 75, 0.75);
+}
+
+#chunk-input-container button:focus {
+    outline: none !important;
 }

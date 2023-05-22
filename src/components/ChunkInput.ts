@@ -1,10 +1,18 @@
 export function createChunkInput() {
     const container = document.createElement('div');
-    container.classList.add('hidden');
+    container.classList.add(
+        'hidden',
+        'flex',
+        'flex-col',
+        'rounded-md',
+        'shadow-[0_0_10px_rgba(0,0,0,0.10)]',
+        'dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]'
+    );
     container.id = 'chunk-input-container';
 
     const label = document.createElement('label');
-    label.classList.add('text-white', 'text-sm');
+    label.classList.add('text-white', 'text-sm', 'py-2', 'px-4');
+
     label.textContent = 'Chunk Size';
     label.style.fontWeight = '700';
 

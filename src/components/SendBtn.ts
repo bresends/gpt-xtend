@@ -35,7 +35,8 @@ export function createSendBtn() {
         'dark:bg-white/5',
         'p-3',
         'rounded-md',
-        'relative'
+        'relative',
+        'cursor-pointer'
     );
 
     sendBtn.style.flex = '1 1 0%';
