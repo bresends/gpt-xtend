@@ -4,6 +4,12 @@
 
 #gpt-x-toggle-view-btn {
     right: 2rem;
+    bottom: 0.575rem;
+    transition: transform 200ms ease-in-out;
+}
+
+#gpt-x-toggle-view-btn:hover {
+    transform: scale(1.1);
 }
 
 .progress-container {
