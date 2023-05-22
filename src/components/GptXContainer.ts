@@ -37,6 +37,7 @@ export function createGPTXtendContainer() {
     const progressBar = createProgressBar();
     const summaryBtn = createPromptBtn({ text: 'Video Summary' });
     const bulletBtn = createPromptBtn({ text: 'Bullet' });
+    const conciseBtn = createPromptBtn({ text: 'Concise' });
 
     progressBar.id = 'progress-bar';
 
@@ -47,10 +48,11 @@ export function createGPTXtendContainer() {
 
     promptBtnContainer.appendChild(summaryBtn);
     promptBtnContainer.appendChild(bulletBtn);
+    promptBtnContainer.appendChild(conciseBtn);
 
     gptXtendContainer.appendChild(inputsContainer);
-    gptXtendContainer.appendChild(progressBar);
     gptXtendContainer.appendChild(promptBtnContainer);
+    gptXtendContainer.appendChild(progressBar);
 
     return gptXtendContainer;
 }

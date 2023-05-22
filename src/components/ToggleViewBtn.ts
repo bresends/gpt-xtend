@@ -8,12 +8,7 @@ export function createToggleViewBtn(gptXContainer: HTMLDivElement) {
 
     const showGPTXtendContainer = document.createElement('span');
 
-    showGPTXtendContainer.classList.add(
-        'absolute',
-        'p-1',
-        'text-gray-500',
-        'enabled:dark:hover:text-gray-400'
-    );
+    showGPTXtendContainer.classList.add('absolute', 'p-1', 'text-gray-500');
 
     showGPTXtendContainer.id = 'gpt-x-toggle-view-btn';
 
