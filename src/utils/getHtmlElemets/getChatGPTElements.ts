@@ -3,10 +3,12 @@ export function getGptTextArea(): HTMLTextAreaElement | null {
 }
 
 export function getGptSendButton(): HTMLButtonElement | null {
-    return getGptTextArea()?.nextElementSibling as HTMLButtonElement | null;
+    const textArea = getGptTextArea();
+    return textArea?.nextElementSibling as HTMLButtonElement | null;
 }
 
 export function getGptInputAndRegenerateDiv(): HTMLDivElement | null {
-    return getGptTextArea()?.parentElement?.parentNode
+    const textArea = getGptTextArea();
+    return textArea?.parentElement?.parentNode
         ?.firstChild as HTMLDivElement | null;
 }
