@@ -1,18 +1,15 @@
+import { getGptTextArea } from './utils/getHtmlElemets/getChatGPTElements';
+import { getXtendContainer } from './utils/getHtmlElemets/getXtendElements';
 import { insertGPTXtendElements } from './utils/insertElements';
 
 function initializeExtension() {
     const observer = new MutationObserver((mutationsList) => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList') {
-                const textArea = document.querySelector(
-                    "textarea[tabindex='0']"
-                ) as HTMLTextAreaElement;
+                const textArea = getGptTextArea();
+                const gptXtend = getXtendContainer();
 
-                const textBoxContainer = textArea?.parentElement;
-
-                const gptXtend = document.querySelector('.gpt-x-container');
-
-                if (textBoxContainer && !gptXtend) {
+                if (textArea && !gptXtend) {
                     insertGPTXtendElements();
                     break;
                 }

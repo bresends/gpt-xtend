@@ -1,4 +1,9 @@
 import { getGptTextArea } from './getHtmlElemets/getChatGPTElements';
+import {
+    getXtendChunkSize,
+    getXtendProgressBar,
+    getXtendPrompt,
+} from './getHtmlElemets/getXtendElements';
 import { submitConversation } from './submitInput';
 
 export function textToChunks(
@@ -26,21 +31,12 @@ function isChatGptReady() {
 
 export async function handleChunkInput() {
     const textarea = getGptTextArea();
-    const progressBar = document.querySelector(
-        '.progress-bar'
-    ) as HTMLDivElement;
+    const progressBar = getXtendProgressBar();
+    const chunkSizeInput = getXtendChunkSize();
+    const { start: startPromptInput, end: endPromptInput } = getXtendPrompt();
 
-    const chunkSizeInput = document.querySelector(
-        '#chunk-input-number'
-    ) as HTMLInputElement;
-
-    const startPromptInput = document.querySelector(
-        '#prompt-start'
-    ) as HTMLInputElement;
-
-    const endPromptInput = document.querySelector(
-        '#prompt-end'
-    ) as HTMLInputElement;
+    if (!startPromptInput || !endPromptInput || !progressBar)
+        throw new Error('Xtend not present');
 
     const chunks = textToChunks(
         textarea?.value,
@@ -49,7 +45,6 @@ export async function handleChunkInput() {
 
     const startPrompt = startPromptInput?.value;
     const endPrompt = endPromptInput?.value;
-
     const numChunks = chunks.length;
 
     // Reset the Progress Bar
