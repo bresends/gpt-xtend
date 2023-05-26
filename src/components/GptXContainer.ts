@@ -35,20 +35,30 @@ export function createGPTXtendContainer() {
     const sendBtn = createSendBtn();
     const configBtn = createConfigBtn();
     const progressBar = createProgressBar();
+
     const summaryBtn = createPromptBtn({
         label: 'Video Summary',
         startText: 'Video Summary:',
         endText: 'VIDEO SUMMARY:',
     });
-    const bulletBtn = createPromptBtn({
-        label: 'Bullet List',
-        startText: 'Create a list of bullet items:',
-        endText: 'BULLET LIST:',
+
+    const gist = createPromptBtn({
+        label: 'Gist',
+        startText: 'Extract the gist of the following:',
+        endText: 'GIST:',
     });
-    const conciseBtn = createPromptBtn({
-        label: 'Concise',
-        startText: 'Create a concise list from this text:',
-        endText: 'CONCISE LIST:',
+
+    const stepBtn = createPromptBtn({
+        label: 'Step by Step',
+        startText:
+            'Write an engaging and actionable Step by Step guide from the following text:',
+        endText: 'STEP BY STEP GUIDE:',
+    });
+
+    const keyTakeaways = createPromptBtn({
+        label: 'Takeaways',
+        startText: 'What are the key takeaways from the following:',
+        endText: 'KEY TAKEAWAYS:',
     });
 
     progressBar.id = 'progress-bar';
@@ -59,8 +69,9 @@ export function createGPTXtendContainer() {
     inputsContainer.appendChild(sendBtn);
 
     promptBtnContainer.appendChild(summaryBtn);
-    promptBtnContainer.appendChild(bulletBtn);
-    promptBtnContainer.appendChild(conciseBtn);
+    promptBtnContainer.appendChild(gist);
+    promptBtnContainer.appendChild(stepBtn);
+    promptBtnContainer.appendChild(keyTakeaways);
 
     gptXtendContainer.appendChild(inputsContainer);
     gptXtendContainer.appendChild(promptBtnContainer);
