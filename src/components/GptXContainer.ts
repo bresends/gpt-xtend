@@ -56,8 +56,6 @@ export function createGPTXtendContainer() {
         endText: 'KEY TAKEAWAYS:',
     });
 
-    progressBar.id = 'progress-bar';
-
     inputsContainer.appendChild(promptStart);
     inputsContainer.appendChild(promptEnd);
     inputsContainer.appendChild(configBtn);

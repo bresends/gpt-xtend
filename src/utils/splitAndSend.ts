@@ -1,7 +1,6 @@
 import { getGptTextArea } from './getHtmlElemets/getChatGPTElements';
 import {
     getXtendChunkSize,
-    getXtendContainer,
     getXtendProgressBar,
     getXtendPrompt,
     getXtendToggleViewButton,
@@ -50,11 +49,7 @@ export async function handleChunkInput() {
     const endPrompt = endPromptInput?.value;
     const numChunks = chunks.length;
 
-    // Reset the Progress Bar
-    progressBar.style.width = '0%';
-
     toggleViewBtn?.click();
-    console.log('Sending chunks to GPT');
 
     for (let i = 0; i < numChunks; i++) {
         await submitConversation({

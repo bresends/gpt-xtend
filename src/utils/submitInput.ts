@@ -1,3 +1,5 @@
+import { getGptTextArea } from './getHtmlElemets/getChatGPTElements';
+
 interface SubmitInput {
     text: string;
     chunkNumber: number;
@@ -11,9 +13,7 @@ export async function submitConversation({
     startPrompt,
     endPrompt,
 }: SubmitInput) {
-    const textarea = document.querySelector(
-        "textarea[tabindex='0']"
-    ) as HTMLTextAreaElement | null;
+    const textarea = getGptTextArea();
 
     const enterKeyEvent = new KeyboardEvent('keydown', {
         bubbles: true,
