@@ -9,14 +9,9 @@ export function createGPTXtendContainer() {
     const inputsContainer = document.createElement('div');
     const promptBtnContainer = document.createElement('div');
 
-    gptXtendContainer.classList.add('hidden');
+    gptXtendContainer.classList.add('hidden', 'gpt-x-container');
 
-    inputsContainer.classList.add(
-        'gpt-x-container',
-        'flex',
-        'justify-between',
-        'gap-3'
-    );
+    inputsContainer.classList.add('flex', 'justify-between', 'gap-3');
 
     promptBtnContainer.classList.add('flex', 'gap-3');
 

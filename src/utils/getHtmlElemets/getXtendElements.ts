@@ -10,6 +10,10 @@ export function getXtendChunkSize(): HTMLInputElement | null {
     return document.querySelector('#chunk-input-number');
 }
 
+export function getXtendToggleViewButton(): HTMLButtonElement | null {
+    return document.querySelector('#gpt-x-toggle-view-btn');
+}
+
 export function getXtendPrompt(): {
     start: HTMLInputElement | null;
     end: HTMLInputElement | null;

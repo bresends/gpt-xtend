@@ -1,8 +1,10 @@
 import { getGptTextArea } from './getHtmlElemets/getChatGPTElements';
 import {
     getXtendChunkSize,
+    getXtendContainer,
     getXtendProgressBar,
     getXtendPrompt,
+    getXtendToggleViewButton,
 } from './getHtmlElemets/getXtendElements';
 import { submitConversation } from './submitInput';
 
@@ -33,6 +35,7 @@ export async function handleChunkInput() {
     const textarea = getGptTextArea();
     const progressBar = getXtendProgressBar();
     const chunkSizeInput = getXtendChunkSize();
+    const toggleViewBtn = getXtendToggleViewButton();
     const { start: startPromptInput, end: endPromptInput } = getXtendPrompt();
 
     if (!startPromptInput || !endPromptInput || !progressBar)
@@ -49,6 +52,9 @@ export async function handleChunkInput() {
 
     // Reset the Progress Bar
     progressBar.style.width = '0%';
+
+    toggleViewBtn?.click();
+    console.log('Sending chunks to GPT');
 
     for (let i = 0; i < numChunks; i++) {
         await submitConversation({
