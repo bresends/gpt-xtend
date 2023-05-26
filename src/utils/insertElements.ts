@@ -1,27 +1,20 @@
 import { createGPTXtendContainer } from '../components/GptXContainer';
 import { createToggleViewBtn } from '../components/ToggleViewBtn';
+import {
+    getGptInputAndRegenerateDiv,
+    getGptSendButton,
+    getGptTextArea,
+} from './getHtmlElemets/getChatGPTElements';
 import { handleChunkInput } from './splitAndSend';
 
-export function insertElementsToGPT() {
-    const sendTextBtn = document.querySelector(
-        "textarea[tabindex='0']"
-    )?.nextElementSibling;
-
-    const textArea = document.querySelector(
-        "textarea[tabindex='0']"
-    ) as HTMLTextAreaElement;
-
-    const textBoxContainer = document.querySelector(
-        "textarea[tabindex='0']"
-    )?.parentElement;
-
-    const responseContainer = textBoxContainer?.parentNode;
-
+export function insertGPTXtendElements() {
+    const textArea = getGptTextArea();
+    const sendTextBtn = getGptSendButton();
+    const responseContainer = getGptInputAndRegenerateDiv();
     const gptXtendContainer = createGPTXtendContainer();
-
     const toggleViewBtn = createToggleViewBtn(gptXtendContainer);
 
-    responseContainer?.firstChild?.appendChild(gptXtendContainer);
+    responseContainer?.appendChild(gptXtendContainer);
 
     sendTextBtn?.parentElement?.insertBefore(toggleViewBtn, sendTextBtn);
 

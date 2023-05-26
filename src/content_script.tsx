@@ -1,6 +1,5 @@
-import { insertElementsToGPT } from './utils/insertElements';
+import { insertGPTXtendElements } from './utils/insertElements';
 
-// Module: Main
 function initializeExtension() {
     const observer = new MutationObserver((mutationsList) => {
         for (const mutation of mutationsList) {
@@ -14,7 +13,7 @@ function initializeExtension() {
                 const gptXtend = document.querySelector('.gpt-x-container');
 
                 if (textBoxContainer && !gptXtend) {
-                    insertElementsToGPT();
+                    insertGPTXtendElements();
                     break;
                 }
             }

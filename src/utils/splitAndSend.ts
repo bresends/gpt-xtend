@@ -47,6 +47,9 @@ export async function handleChunkInput() {
 
     const numChunks = chunks.length;
 
+    // Reset the Progress Bar
+    progressBar.style.width = '0%';
+
     for (let i = 0; i < numChunks; i++) {
         await submitConversation({
             text: chunks[i],
