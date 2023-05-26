@@ -9,15 +9,15 @@ export function textToChunks(text: string, chunkSize: number): string[] {
     return chunks;
 }
 
-export async function handleChunkInput() {
-    function isChatGptReady() {
-        // If not present, the GPT can be assumed to be ready
-        const gptIsProcessingSVG = document.querySelector(
-            '.text-2xl > span:not(.invisible)'
-        );
-        return !gptIsProcessingSVG;
-    }
+function isChatGptReady() {
+    // If not present, the GPT can be assumed to be ready
+    const gptIsProcessingSVG = document.querySelector(
+        '.text-2xl > span:not(.invisible)'
+    );
+    return !gptIsProcessingSVG;
+}
 
+export async function handleChunkInput() {
     const textarea = document.querySelector(
         "textarea[tabindex='0']"
     ) as HTMLTextAreaElement;
