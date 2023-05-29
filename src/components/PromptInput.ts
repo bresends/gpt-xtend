@@ -1,4 +1,10 @@
-export function createPrompt(label: string, defaultValue: string, id: string) {
+interface PromptInput {
+    label: string;
+    defaultValue: string;
+    id: string;
+}
+
+export function createPrompt({ label, defaultValue, id }: PromptInput) {
     const promptContainer = document.createElement('div');
     const promptLabel = document.createElement('label');
     const promptInput = document.createElement('input');

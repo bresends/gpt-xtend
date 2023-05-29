@@ -15,17 +15,17 @@ export function createGPTXtendContainer() {
 
     promptBtnContainer.classList.add('flex', 'gap-3');
 
-    const promptStart = createPrompt(
-        'Prompt Start',
-        'Video Summary:',
-        'prompt-start'
-    );
+    const promptStart = createPrompt({
+        label: 'Prompt Start',
+        defaultValue: 'Video Summary',
+        id: 'prompt-start',
+    });
 
-    const promptEnd = createPrompt(
-        'Prompt End',
-        'VIDEO SUMMARY:',
-        'prompt-end'
-    );
+    const promptEnd = createPrompt({
+        label: 'Prompt End',
+        defaultValue: 'VIDEO SUMMARY:',
+        id: 'prompt-end',
+    });
 
     const sendBtn = createSendBtn();
     const configBtn = createConfigBtn();
