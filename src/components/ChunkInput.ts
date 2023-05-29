@@ -32,8 +32,8 @@ export function createChunkInput() {
     decrementButton.addEventListener('click', (event: MouseEvent) => {
         event.stopPropagation();
         const oldValue = parseInt(input.value);
-        if (oldValue < 2500) return;
-        const newValue = oldValue - 2500;
+        if (oldValue < 3000) return;
+        const newValue = oldValue - 3000;
         input.value = String(newValue);
     });
 
@@ -49,7 +49,7 @@ export function createChunkInput() {
         'text-white'
     );
 
-    input.setAttribute('value', '12500');
+    input.setAttribute('value', '13000');
 
     const incrementButton = document.createElement('button');
 
@@ -68,7 +68,7 @@ export function createChunkInput() {
         const oldValue = parseInt(input.value);
         if (oldValue >= 20000) return;
 
-        const newValue = oldValue + 2500;
+        const newValue = oldValue + 3000;
         input.value = String(newValue);
     });
 
