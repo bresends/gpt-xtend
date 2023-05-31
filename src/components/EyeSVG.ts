@@ -3,7 +3,7 @@ export function createOpenEyeSVG() {
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('fill', 'none');
     svg.setAttribute('viewBox', '0 0 24 24');
-    svg.setAttribute('stroke-width', '1.5');
+    svg.setAttribute('stroke-width', '2');
     svg.setAttribute('stroke', 'currentColor');
     svg.setAttribute('class', 'w-5 h-5');
 
@@ -38,7 +38,7 @@ export function createClosedEyeSVG() {
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('fill', 'none');
     svg.setAttribute('viewBox', '0 0 24 24');
-    svg.setAttribute('stroke-width', '1.5');
+    svg.setAttribute('stroke-width', '2');
     svg.setAttribute('stroke', 'currentColor');
     svg.setAttribute('class', 'w-5 h-5');
 

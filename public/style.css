@@ -3,13 +3,17 @@
 }
 
 #gpt-x-toggle-view-btn {
-    right: 2rem;
-    bottom: 0.575rem;
-    transition: transform 200ms ease-in-out;
+    right: 2.75rem;
+    bottom: 1.125rem;
+    margin-top: 0.125rem;
+    transition-property: color, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
 }
 
 #gpt-x-toggle-view-btn:hover {
     transform: scale(1.1);
+    color: white;
 }
 
 .progress-container {
