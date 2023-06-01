@@ -2,9 +2,9 @@ export function getGptTextArea(): HTMLTextAreaElement | null {
     return document.querySelector("textarea[tabindex='0']");
 }
 
-export function getGptSendButton(): HTMLButtonElement | null {
+export function getGptSendButton(): HTMLButtonElement | null | undefined {
     const textArea = getGptTextArea();
-    return textArea?.nextElementSibling as HTMLButtonElement | null;
+    return textArea?.parentElement?.querySelector('button');
 }
 
 export function getGptInputAndRegenerateDiv(): HTMLDivElement | null {
