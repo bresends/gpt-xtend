@@ -1,7 +1,7 @@
 import { createGPTXtendContainer } from '../components/GptXContainer';
 import { createToggleViewBtn } from '../components/ToggleViewBtn';
 import {
-    getGptInputAndRegenerateDiv,
+    getGptInputDiv,
     getGptSendButton,
     getGptTextArea,
 } from './getHtmlElemets/getChatGPTElements';
@@ -10,11 +10,11 @@ import { handleChunkInput } from './splitAndSend';
 export function insertGPTXtendElements() {
     const textArea = getGptTextArea();
     const sendTextBtn = getGptSendButton();
-    const responseContainer = getGptInputAndRegenerateDiv();
+    const gptInputDiv = getGptInputDiv();
     const gptXtendContainer = createGPTXtendContainer();
     const toggleViewBtn = createToggleViewBtn(gptXtendContainer);
 
-    responseContainer?.appendChild(gptXtendContainer);
+    gptInputDiv?.prepend(gptXtendContainer);
 
     sendTextBtn?.parentElement?.insertBefore(toggleViewBtn, sendTextBtn);
 
