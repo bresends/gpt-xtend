@@ -1,3 +1,4 @@
+import { extensionExecutionController } from '../store';
 import { getGptTextArea } from './getHtmlElemets/getChatGPTElements';
 import {
     getXtendChunkSize,
@@ -22,12 +23,11 @@ export function textToChunks(
     return chunks;
 }
 
-function isChatGptReady() {
-    // If the dot of response is not present, the GPT can be assumed to be ready
+function isGPTProcessing() {
     const gptIsProcessingSVG = document.querySelector(
         '.text-2xl > span:not(.invisible)'
     );
-    return !gptIsProcessingSVG;
+    return !!gptIsProcessingSVG;
 }
 
 export async function handleChunkInput() {
@@ -51,7 +51,10 @@ export async function handleChunkInput() {
 
     toggleViewBtn?.click();
 
+    extensionExecutionController.start();
     for (let i = 0; i < numChunks; i++) {
+        if (!extensionExecutionController.getIsRunning()) return;
+
         await submitConversation({
             text: chunks[i],
             chunkNumber: i + 1,
@@ -60,8 +63,10 @@ export async function handleChunkInput() {
         });
         progressBar.style.width = `${((i + 1) / numChunks) * 100}%`;
 
-        while (!isChatGptReady()) {
+        // Wait for GPT to finish processing before sending next chunk
+        while (isGPTProcessing()) {
             await new Promise((resolve) => setTimeout(resolve, 1000));
         }
     }
+    extensionExecutionController.stop();
 }
