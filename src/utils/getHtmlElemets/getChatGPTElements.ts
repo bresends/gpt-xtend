@@ -7,8 +7,7 @@ export function getGptSendButton(): HTMLButtonElement | null | undefined {
     return textArea?.parentElement?.querySelector('button');
 }
 
-export function getGptInputAndRegenerateDiv(): HTMLDivElement | null {
+export function getGptInputDiv(): HTMLDivElement | null {
     const textArea = getGptTextArea();
-    return textArea?.parentElement?.parentNode
-        ?.firstChild as HTMLDivElement | null;
+    return textArea?.parentElement?.parentElement as HTMLDivElement | null;
 }
