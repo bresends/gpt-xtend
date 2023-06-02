@@ -1,10 +1,18 @@
-import { getGptTextArea } from './getHtmlElemets/getChatGPTElements';
+import {
+    getGptSendButton,
+    getGptTextArea,
+} from './getHtmlElemets/getChatGPTElements';
 
 interface SubmitInput {
     text: string;
     chunkNumber: number;
     startPrompt: string;
     endPrompt: string;
+}
+
+function isSendButtonEnabled() {
+    const sendBtn = getGptSendButton();
+    return !sendBtn?.disabled;
 }
 
 export async function submitConversation({
@@ -18,11 +26,18 @@ export async function submitConversation({
     const enterKeyEvent = new KeyboardEvent('keydown', {
         bubbles: true,
         cancelable: true,
-        keyCode: 13,
+        keyCode: 13, // Key code for the enter key
     });
 
-    if (!textarea) return;
+    if (!textarea) throw new Error('TextArea not found');
 
     textarea.value = `${startPrompt}\n\nTranscript Part: ${chunkNumber}: ${text}\n\n${endPrompt}`;
+    textarea.dispatchEvent(new Event('input', { bubbles: true }));
+
+    while (!isSendButtonEnabled()) {
+        console.log("Can't Submit Trying Again...", isSendButtonEnabled());
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+
     textarea.dispatchEvent(enterKeyEvent);
 }
