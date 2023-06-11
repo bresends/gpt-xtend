@@ -17,7 +17,11 @@ export function createPrompt({ label, defaultValue, id }: PromptInput) {
 
     promptContainer.classList.add('flex', 'flex-col', 'w-full', 'py-2');
 
-    promptLabel.classList.add('p-2');
+    promptLabel.classList.add(
+        'pb-2',
+        'shadow-[0_0_10px_rgba(0,0,0,0.10)]',
+        'dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]'
+    );
 
     promptInput.classList.add(
         'focus:ring-0',
