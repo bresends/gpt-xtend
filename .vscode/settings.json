@@ -1,11 +1,10 @@
 {
     "typescript.tsdk": "./node_modules/typescript/lib",
+    "prettier.prettierPath": "./node_modules/prettier",
     "files.eol": "\n",
     "json.schemas": [
         {
-            "fileMatch": [
-                "/manifest.json"
-            ],
+            "fileMatch": ["/manifest.json"],
             "url": "http://json.schemastore.org/chrome-manifest"
         }
     ]
