@@ -31,7 +31,7 @@ export async function submitConversation({
 
     if (!textarea) throw new Error('TextArea not found');
 
-    textarea.value = `${startPrompt}\n\nTranscript Part: ${chunkNumber}: ${text}\n\n${endPrompt}`;
+    textarea.value = `${startPrompt}\n\n\`\`\`\nTranscript Part: ${chunkNumber}: ${text}\n\`\`\`\n\n${endPrompt}`;
     textarea.dispatchEvent(new Event('input', { bubbles: true }));
 
     while (!isSendButtonEnabled()) {
