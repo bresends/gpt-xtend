@@ -1,5 +1,5 @@
 import { chatGPTElements, gptExtendElements } from './getPageElements';
-import { handleChunkInput } from './utils/splitAndSend';
+import { handleChunkInput } from './utils/processChunks';
 
 export function injectGptFunctionality() {
     const { textArea, sendButton } = chatGPTElements();
