@@ -1,4 +1,4 @@
-import { handleChunkInput } from '../utils/splitAndSend';
+import { handleChunkInput } from '../utils/processChunks';
 
 function createSendSVG() {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
