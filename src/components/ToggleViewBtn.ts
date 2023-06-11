@@ -1,4 +1,18 @@
+import { chatGPTElements } from '../getPageElements';
 import { createOpenEyeSVG, createClosedEyeSVG } from './EyeSVG';
+
+function placeXtendContainerBelowResponseButtons() {
+    const { regenerateAndStopBtnTopDiv } = chatGPTElements();
+
+    if (!regenerateAndStopBtnTopDiv) return;
+
+    const parentElement = regenerateAndStopBtnTopDiv.parentNode;
+
+    parentElement?.insertBefore(
+        regenerateAndStopBtnTopDiv,
+        parentElement.firstChild
+    );
+}
 
 export function createToggleViewBtn(gptXContainer: HTMLDivElement) {
     let open = false;
@@ -7,9 +21,7 @@ export function createToggleViewBtn(gptXContainer: HTMLDivElement) {
     const closedEyeSVG = createClosedEyeSVG();
 
     const showGPTXtendContainer = document.createElement('span');
-
     showGPTXtendContainer.classList.add('absolute', 'text-gray-500');
-
     showGPTXtendContainer.id = 'gpt-x-toggle-view-btn';
 
     showGPTXtendContainer.appendChild(openEyeSVG);
@@ -24,6 +36,8 @@ export function createToggleViewBtn(gptXContainer: HTMLDivElement) {
         } else {
             showGPTXtendContainer.replaceChild(closedEyeSVG, openEyeSVG);
         }
+
+        placeXtendContainerBelowResponseButtons();
     });
 
     return showGPTXtendContainer;
