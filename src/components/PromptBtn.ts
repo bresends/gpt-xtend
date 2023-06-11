@@ -44,8 +44,6 @@ export function createPromptBtn({ label, startText, endText }: PromptBtnProps) {
         'cursor-pointer',
         'flex',
         'justify-between',
-        'bg-gray-50',
-        'dark:bg-white/5',
         'gap-3'
     );
 
