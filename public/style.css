@@ -1,3 +1,5 @@
+/* GPT Extend Styling */
+
 .hidden {
     display: none;
 }
@@ -73,8 +75,14 @@ input[type='number']::-webkit-outer-spin-button {
     user-select: none;
 }
 
-/* Reset GPT Send Button Styling */
+/* GPT Elements Restyling */
 
+/* Reset GPT Send Button Styling */
 button.transition-colors {
     background-color: transparent !important;
+}
+
+/* Move processing dots up */
+.text-2xl {
+    padding-bottom: 0.325rem !important;
 }
