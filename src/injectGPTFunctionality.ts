@@ -6,6 +6,12 @@ export function injectGptFunctionality() {
     const { gptXtendContainer } = gptExtendElements();
 
     textArea?.addEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            if (gptXtendContainer?.classList.contains('hidden')) return;
+            event.preventDefault();
+            handleChunkInput();
+        }
+
         if (event.key === 'Enter' && event.altKey) {
             handleChunkInput();
         }

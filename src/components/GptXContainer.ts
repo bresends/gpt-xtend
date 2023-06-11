@@ -1,8 +1,7 @@
-import { createPrompt } from './PromptInput';
-import { createSendBtn } from './SendBtn';
 import { createConfigBtn } from './ConfigBtn';
 import { createProgressBar } from './ProgressBar';
 import { createPromptBtn } from './PromptBtn';
+import { createPrompt } from './PromptInput';
 
 export function createGPTXtendContainer() {
     const gptXtendContainer = document.createElement('div');
@@ -27,7 +26,6 @@ export function createGPTXtendContainer() {
         id: 'prompt-end',
     });
 
-    const sendBtn = createSendBtn();
     const configBtn = createConfigBtn();
     const progressBar = createProgressBar();
 
@@ -71,7 +69,6 @@ Use the following text:
     inputsContainer.appendChild(promptStart);
     inputsContainer.appendChild(promptEnd);
     inputsContainer.appendChild(configBtn);
-    inputsContainer.appendChild(sendBtn);
 
     promptBtnContainer.appendChild(summaryBtn);
     promptBtnContainer.appendChild(gist);
