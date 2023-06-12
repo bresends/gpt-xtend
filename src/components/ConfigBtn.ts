@@ -43,12 +43,11 @@ export function createConfigBtn() {
     const chunkSizeInput = createChunkInput();
 
     configBtn.classList.add(
+        'config-btn',
         'flex',
         'flex-col',
         'w-full',
         'py-2',
-        'bg-gray-50',
-        'dark:bg-white/5',
         'p-3',
         'rounded-md',
         'relative',
@@ -61,6 +60,7 @@ export function createConfigBtn() {
 
     configBtn.appendChild(configSVG);
     configBtn.appendChild(chunkSizeInput);
+
     configBtn.addEventListener('click', (event: MouseEvent) => {
         event.stopPropagation();
         chunkSizeInput.classList.toggle('hidden');
@@ -70,6 +70,7 @@ export function createConfigBtn() {
         const isClickedInsideConfigBtn = configBtn.contains(
             event.target as Node
         );
+
         if (!isClickedInsideConfigBtn) {
             chunkSizeInput.classList.add('hidden');
         }
