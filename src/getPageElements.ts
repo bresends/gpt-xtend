@@ -42,7 +42,7 @@ export function gptExtendElements() {
     ) as HTMLInputElement | null;
 
     const gptXtendToggleViewButton = document.querySelector(
-        '#gpt-x-toggle-view-btn'
+        '#gptXtend-toggle-view-btn'
     ) as HTMLButtonElement | null;
 
     const gptXtendPromptStart = document.querySelector(

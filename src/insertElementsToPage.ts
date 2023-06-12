@@ -6,7 +6,7 @@ export function insertGPTXtendElements() {
     const { sendButton, textAreaAndButtonsTopContainer } = chatGPTElements();
 
     const gptXtendContainer = createGPTXtendContainer();
-    const toggleViewBtn = createToggleViewBtn(gptXtendContainer);
+    const toggleViewBtn = createToggleViewBtn();
 
     textAreaAndButtonsTopContainer?.prepend(gptXtendContainer);
     sendButton?.parentElement?.insertBefore(toggleViewBtn, sendButton);

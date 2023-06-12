@@ -3,7 +3,7 @@ import { handleChunkInput } from './utils/processChunks';
 
 export function injectGptFunctionality() {
     const { textArea, sendButton } = chatGPTElements();
-    const { gptXtendContainer } = gptExtendElements();
+    const { gptXtendContainer, gptXtendToggleViewButton } = gptExtendElements();
 
     textArea?.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
@@ -14,6 +14,12 @@ export function injectGptFunctionality() {
 
         if (event.key === 'Enter' && event.altKey) {
             handleChunkInput();
+        }
+    });
+
+    document.body?.addEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key === 'x' && event.altKey) {
+            gptXtendToggleViewButton?.click();
         }
     });
 
