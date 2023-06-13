@@ -1,13 +1,13 @@
 export function getChatGPTElements() {
-    const textArea = document.querySelector(
+    const chatTextArea = document.querySelector(
         "textarea[tabindex='0']"
     ) as HTMLTextAreaElement | null;
 
-    const sendButton = textArea?.parentElement?.querySelector(
+    const sendButton = chatTextArea?.parentElement?.querySelector(
         'button'
     ) as HTMLButtonElement | null;
 
-    const textAreaAndButtonsTopContainer = textArea?.parentElement
+    const chatTextAreaAndButtonsTopContainer = chatTextArea?.parentElement
         ?.parentElement as HTMLDivElement | null;
 
     const processingInputDots = document.querySelector(
@@ -15,14 +15,14 @@ export function getChatGPTElements() {
     );
 
     const regenerateAndStopBtnTopDiv =
-        textArea?.parentElement?.parentElement?.querySelector(
+        chatTextArea?.parentElement?.parentElement?.querySelector(
             'div[class=""]'
         ) as HTMLDivElement | null;
 
     return {
-        textArea,
+        chatTextArea,
         sendButton,
-        textAreaAndButtonsTopContainer,
+        chatTextAreaAndButtonsTopContainer,
         processingInputDots,
         regenerateAndStopBtnTopDiv,
     };

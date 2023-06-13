@@ -3,11 +3,12 @@ import { createToggleViewBtn } from './components/ToggleViewBtn';
 import { getChatGPTElements } from './getPageElements';
 
 export function insertGPTXtendElements() {
-    const { sendButton, textAreaAndButtonsTopContainer } = getChatGPTElements();
+    const { sendButton, chatTextAreaAndButtonsTopContainer } =
+        getChatGPTElements();
 
     const gptXtendContainer = createGPTXtendContainer();
     const toggleViewBtn = createToggleViewBtn();
 
-    textAreaAndButtonsTopContainer?.prepend(gptXtendContainer);
+    chatTextAreaAndButtonsTopContainer?.prepend(gptXtendContainer);
     sendButton?.parentElement?.insertBefore(toggleViewBtn, sendButton);
 }

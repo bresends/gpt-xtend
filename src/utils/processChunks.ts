@@ -9,7 +9,7 @@ function isGPTProcessing() {
 }
 
 export async function handleChunkInput() {
-    const { textArea } = getChatGPTElements();
+    const { chatTextArea } = getChatGPTElements();
     const {
         gptXtendProgressBar,
         gptXtendChunkSize,
@@ -22,7 +22,7 @@ export async function handleChunkInput() {
         throw new Error('Xtend not present');
 
     const chunks = splitText(
-        textArea?.value,
+        chatTextArea?.value,
         parseInt(gptXtendChunkSize?.value || '12000')
     );
 
