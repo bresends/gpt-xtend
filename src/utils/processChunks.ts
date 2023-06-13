@@ -1,22 +1,22 @@
-import { chatGPTElements, gptExtendElements } from '../getPageElements';
+import { getChatGPTElements, getGPTXtendElements } from '../getPageElements';
 import { extensionExecutionController } from '../store';
 import { splitText } from './splitText';
 import { submitConversation } from './submitInput';
 
 function isGPTProcessing() {
-    const { processingInputDots } = chatGPTElements();
+    const { processingInputDots } = getChatGPTElements();
     return !!processingInputDots;
 }
 
 export async function handleChunkInput() {
-    const { textArea } = chatGPTElements();
+    const { textArea } = getChatGPTElements();
     const {
         gptXtendProgressBar,
         gptXtendChunkSize,
         gptXtendToggleViewButton,
         gptXtendPromptStart,
         gptXtendPromptEnd,
-    } = gptExtendElements();
+    } = getGPTXtendElements();
 
     if (!gptXtendPromptStart || !gptXtendPromptEnd || !gptXtendProgressBar)
         throw new Error('Xtend not present');

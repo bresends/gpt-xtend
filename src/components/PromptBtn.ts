@@ -1,4 +1,4 @@
-import { gptExtendElements } from '../getPageElements';
+import { getGPTXtendElements } from '../getPageElements';
 
 function writingSVG() {
     const svgNS = 'http://www.w3.org/2000/svg';
@@ -51,7 +51,8 @@ export function createPromptBtn({ label, startText, endText }: PromptBtnProps) {
 
     promptBtn.addEventListener('click', (event: MouseEvent) => {
         event.stopPropagation();
-        const { gptXtendPromptStart, gptXtendPromptEnd } = gptExtendElements();
+        const { gptXtendPromptStart, gptXtendPromptEnd } =
+            getGPTXtendElements();
 
         if (!gptXtendPromptStart || !gptXtendPromptEnd) return;
 

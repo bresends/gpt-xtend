@@ -1,23 +1,19 @@
-import { chatGPTElements, gptExtendElements } from './getPageElements';
-import { injectGptFunctionality } from './injectGPTFunctionality';
+import { getChatGPTElements, getGPTXtendElements } from './getPageElements';
+import { injectGptFunctionality as injectGPTFunctionality } from './injectGPTFunctionality';
 import { insertGPTXtendElements } from './insertElementsToPage';
 
-function initializeExtension() {
-    const observer = new MutationObserver((mutationsList) => {
-        for (const mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-                const { textArea } = chatGPTElements();
-                const { gptXtendContainer } = gptExtendElements();
+function initializeContentScript() {
+    const mutationObserver = new MutationObserver(() => {
+        const { textArea } = getChatGPTElements();
+        const { gptXtendContainer } = getGPTXtendElements();
 
-                if (textArea && !gptXtendContainer) {
-                    insertGPTXtendElements();
-                    injectGptFunctionality();
-                    break;
-                }
-            }
+        if (textArea && !gptXtendContainer) {
+            insertGPTXtendElements();
+            injectGPTFunctionality();
         }
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 }
 
-initializeExtension();
+initializeContentScript();

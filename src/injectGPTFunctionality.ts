@@ -1,9 +1,10 @@
-import { chatGPTElements, gptExtendElements } from './getPageElements';
+import { getChatGPTElements, getGPTXtendElements } from './getPageElements';
 import { handleChunkInput } from './utils/processChunks';
 
 export function injectGptFunctionality() {
-    const { textArea, sendButton } = chatGPTElements();
-    const { gptXtendContainer, gptXtendToggleViewButton } = gptExtendElements();
+    const { textArea, sendButton } = getChatGPTElements();
+    const { gptXtendContainer, gptXtendToggleViewButton } =
+        getGPTXtendElements();
 
     textArea?.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === 'Enter') {

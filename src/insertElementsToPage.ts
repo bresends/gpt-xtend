@@ -1,9 +1,9 @@
 import { createGPTXtendContainer } from './components/GptXContainer';
 import { createToggleViewBtn } from './components/ToggleViewBtn';
-import { chatGPTElements } from './getPageElements';
+import { getChatGPTElements } from './getPageElements';
 
 export function insertGPTXtendElements() {
-    const { sendButton, textAreaAndButtonsTopContainer } = chatGPTElements();
+    const { sendButton, textAreaAndButtonsTopContainer } = getChatGPTElements();
 
     const gptXtendContainer = createGPTXtendContainer();
     const toggleViewBtn = createToggleViewBtn();

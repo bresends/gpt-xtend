@@ -1,11 +1,12 @@
 import { createClosedEyeSVG, createOpenEyeSVG } from '../components/EyeSVG';
-import { gptExtendElements } from '../getPageElements';
+import { getGPTXtendElements } from '../getPageElements';
 
 export function toggleXtendVisibility(
     eyeOpenSVG: SVGSVGElement,
     eyeClosedSVG: SVGSVGElement
 ) {
-    const { gptXtendContainer, gptXtendToggleViewButton } = gptExtendElements();
+    const { gptXtendContainer, gptXtendToggleViewButton } =
+        getGPTXtendElements();
 
     gptXtendContainer?.classList.toggle('hidden');
 

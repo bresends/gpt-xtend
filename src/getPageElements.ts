@@ -1,4 +1,4 @@
-export function chatGPTElements() {
+export function getChatGPTElements() {
     const textArea = document.querySelector(
         "textarea[tabindex='0']"
     ) as HTMLTextAreaElement | null;
@@ -28,7 +28,7 @@ export function chatGPTElements() {
     };
 }
 
-export function gptExtendElements() {
+export function getGPTXtendElements() {
     const gptXtendContainer = document.querySelector(
         '.gpt-x-container'
     ) as HTMLDivElement | null;

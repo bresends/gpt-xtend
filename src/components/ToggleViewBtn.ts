@@ -1,9 +1,9 @@
-import { chatGPTElements } from '../getPageElements';
+import { getChatGPTElements } from '../getPageElements';
 import { toggleXtendVisibility } from '../utils/toggleXtendVisibility';
 import { createOpenEyeSVG, createClosedEyeSVG } from './EyeSVG';
 
 function placeXtendContainerBelowResponseButtons() {
-    const { regenerateAndStopBtnTopDiv } = chatGPTElements();
+    const { regenerateAndStopBtnTopDiv } = getChatGPTElements();
 
     if (!regenerateAndStopBtnTopDiv) return;
 

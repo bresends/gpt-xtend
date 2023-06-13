@@ -1,4 +1,4 @@
-import { chatGPTElements } from '../getPageElements';
+import { getChatGPTElements } from '../getPageElements';
 
 interface SubmitInput {
     text: string;
@@ -8,7 +8,7 @@ interface SubmitInput {
 }
 
 function isSendButtonEnabled() {
-    const { sendButton } = chatGPTElements();
+    const { sendButton } = getChatGPTElements();
     return !sendButton?.disabled;
 }
 
@@ -18,7 +18,7 @@ export async function submitConversation({
     startPrompt,
     endPrompt,
 }: SubmitInput) {
-    const { textArea } = chatGPTElements();
+    const { textArea } = getChatGPTElements();
 
     const enterKeyEvent = new KeyboardEvent('keydown', {
         bubbles: true,
