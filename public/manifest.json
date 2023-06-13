@@ -2,8 +2,9 @@
     "manifest_version": 3,
 
     "name": "GPTXtend",
-    "description": "Nothing yet",
+    "description": "Easily navigate through lengthy content and engage in meaningful conversations with AI. Enhance your productivity GPTXtend.",
     "version": "1.0",
+    "author": "Bruno Resende",
 
     "action": {
         "default_icon": "icon.png"
@@ -21,8 +22,6 @@
         "48": "icon48.png",
         "128": "icon128.png"
     },
-
-    "permissions": ["storage", "activeTab"],
 
     "host_permissions": ["https://chat.openai.com/*"]
 }
