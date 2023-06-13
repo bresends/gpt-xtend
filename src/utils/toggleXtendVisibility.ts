@@ -1,4 +1,3 @@
-import { createClosedEyeSVG, createOpenEyeSVG } from '../components/EyeSVG';
 import { getGPTXtendElements } from '../getPageElements';
 
 export function toggleXtendVisibility(
