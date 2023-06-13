@@ -3,7 +3,7 @@ export function getChatGPTElements() {
         "textarea[tabindex='0']"
     ) as HTMLTextAreaElement | null;
 
-    const sendButton = chatTextArea?.parentElement?.querySelector(
+    const chatSendButton = chatTextArea?.parentElement?.querySelector(
         'button'
     ) as HTMLButtonElement | null;
 
@@ -21,7 +21,7 @@ export function getChatGPTElements() {
 
     return {
         chatTextArea,
-        sendButton,
+        chatSendButton,
         chatTextAreaAndButtonsTopContainer,
         processingInputDots,
         regenerateAndStopBtnTopDiv,

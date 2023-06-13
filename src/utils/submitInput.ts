@@ -7,9 +7,9 @@ interface SubmitInput {
     endPrompt: string;
 }
 
-function isSendButtonEnabled() {
-    const { sendButton } = getChatGPTElements();
-    return !sendButton?.disabled;
+function ischatSendButtonEnabled() {
+    const { chatSendButton } = getChatGPTElements();
+    return !chatSendButton?.disabled;
 }
 
 export async function submitConversation({
@@ -18,7 +18,7 @@ export async function submitConversation({
     startPrompt,
     endPrompt,
 }: SubmitInput) {
-    const { textArea } = getChatGPTElements();
+    const { chatTextArea } = getChatGPTElements();
 
     const enterKeyEvent = new KeyboardEvent('keydown', {
         bubbles: true,
@@ -26,15 +26,15 @@ export async function submitConversation({
         keyCode: 13, // Key code for the enter key
     });
 
-    if (!textArea) throw new Error('TextArea not found');
+    if (!chatTextArea) throw new Error('TextArea not found');
 
-    textArea.value = `${startPrompt}\n\n\`\`\`\nTranscript Part: ${chunkNumber}: ${text}\n\`\`\`\n\n${endPrompt}`;
-    textArea.dispatchEvent(new Event('input', { bubbles: true }));
+    chatTextArea.value = `${startPrompt}\n\n\`\`\`\nTranscript Part: ${chunkNumber}: ${text}\n\`\`\`\n\n${endPrompt}`;
+    chatTextArea.dispatchEvent(new Event('input', { bubbles: true }));
 
-    while (!isSendButtonEnabled()) {
-        console.log("Can't Submit Trying Again...", isSendButtonEnabled());
+    while (!ischatSendButtonEnabled()) {
+        console.log("Can't Submit Trying Again...", ischatSendButtonEnabled());
         await new Promise((resolve) => setTimeout(resolve, 1000));
     }
 
-    textArea.dispatchEvent(enterKeyEvent);
+    chatTextArea.dispatchEvent(enterKeyEvent);
 }
