@@ -14,7 +14,7 @@ export function injectGPTFunctionality() {
         }
 
         if (event.key === 'Enter' && event.altKey) {
-            // If the extension is hidden, don't do anything
+            // If the extension is showing, don't trigger on Alt + Enter
             if (!gptXtendContainer?.classList.contains('hidden')) return;
             handleChunkInput();
         }
