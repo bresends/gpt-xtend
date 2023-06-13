@@ -13,6 +13,8 @@ export function injectGptFunctionality() {
         }
 
         if (event.key === 'Enter' && event.altKey) {
+            // If the extension is hidden, don't do anything
+            if (!gptXtendContainer?.classList.contains('hidden')) return;
             handleChunkInput();
         }
     });
