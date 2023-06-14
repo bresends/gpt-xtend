@@ -47,6 +47,12 @@ Use the following text:
         endText: '',
     });
 
+    const inDepth = createPromptBtn({
+        label: 'In-Depth',
+        startText: 'Write a in-depth summary of the following text:',
+        endText: 'KEY TAKEAWAYS:',
+    });
+
     const gist = createPromptBtn({
         label: 'Gist',
         startText: 'Extract the gist of the following text:',
@@ -60,20 +66,14 @@ Use the following text:
         endText: 'STEP BY STEP GUIDE:',
     });
 
-    const keyTakeaways = createPromptBtn({
-        label: 'Takeaways',
-        startText: 'What are the key takeaways from the following:',
-        endText: 'KEY TAKEAWAYS:',
-    });
-
     inputsContainer.appendChild(promptStart);
     inputsContainer.appendChild(promptEnd);
     inputsContainer.appendChild(configBtn);
 
     promptBtnContainer.appendChild(summaryBtn);
+    promptBtnContainer.appendChild(inDepth);
     promptBtnContainer.appendChild(gist);
     promptBtnContainer.appendChild(stepBtn);
-    promptBtnContainer.appendChild(keyTakeaways);
 
     gptXtendContainer.appendChild(inputsContainer);
     gptXtendContainer.appendChild(promptBtnContainer);
