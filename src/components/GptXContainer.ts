@@ -50,7 +50,7 @@ Use the following text:
     const inDepth = createPromptBtn({
         label: 'In-Depth',
         startText: 'Write a in-depth summary of the following text:',
-        endText: 'KEY TAKEAWAYS:',
+        endText: '',
     });
 
     const gist = createPromptBtn({
