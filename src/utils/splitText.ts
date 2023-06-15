@@ -13,15 +13,15 @@ export function splitText(
     let remainingText = text;
 
     while (remainingText.length > chunkSize) {
-        let currentChunk = remainingText.substring(0, chunkSize);
+        let currentChunk = remainingText.slice(0, chunkSize);
         let lastSpacePosition = currentChunk.lastIndexOf(SPACE_CHARACTER);
 
         if (lastSpacePosition !== NO_SPACE_FOUND) {
-            currentChunk = currentChunk.substring(0, lastSpacePosition);
+            currentChunk = currentChunk.slice(0, lastSpacePosition);
         }
 
         chunks.push(currentChunk);
-        remainingText = remainingText.substring(currentChunk.length).trim();
+        remainingText = remainingText.slice(currentChunk.length).trim();
     }
 
     if (remainingText.length > 0) {
