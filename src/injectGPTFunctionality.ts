@@ -1,8 +1,10 @@
 import { getChatGPTElements, getGPTXtendElements } from './getPageElements';
+import { extensionExecutionController } from './store';
 import { handleChunkInput } from './utils/processChunks';
 
 export function injectGPTFunctionality() {
-    const { chatTextArea, chatSendButton } = getChatGPTElements();
+    const { chatTextArea, chatSendButton, stopAndRegenerateBtn, pageLinks } =
+        getChatGPTElements();
     const { gptXtendContainer, gptXtendToggleViewButton } =
         getGPTXtendElements();
 
@@ -29,5 +31,13 @@ export function injectGPTFunctionality() {
     chatSendButton?.addEventListener('click', () => {
         if (gptXtendContainer?.classList.contains('hidden')) return;
         handleChunkInput();
+    });
+
+    const stopExecution = () => extensionExecutionController.stop();
+
+    stopAndRegenerateBtn?.addEventListener('click', stopExecution);
+
+    pageLinks?.forEach((link) => {
+        link.addEventListener('click', stopExecution);
     });
 }

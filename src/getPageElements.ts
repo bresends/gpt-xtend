@@ -19,12 +19,20 @@ export function getChatGPTElements() {
             'div[class=""]'
         ) as HTMLDivElement | null;
 
+    const stopAndRegenerateBtn = regenerateAndStopBtnTopDiv?.querySelector(
+        'button'
+    ) as HTMLButtonElement | null;
+
+    const pageLinks = document?.querySelectorAll('a');
+
     return {
         chatTextArea,
         chatSendButton,
         chatTextAreaAndButtonsTopContainer,
         processingInputDots,
         regenerateAndStopBtnTopDiv,
+        stopAndRegenerateBtn,
+        pageLinks,
     };
 }
 

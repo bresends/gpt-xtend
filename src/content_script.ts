@@ -9,8 +9,8 @@ function initializeContentScript() {
 
         if (chatTextArea && !gptXtendContainer) {
             insertGPTXtendElements();
-            injectGPTFunctionality();
         }
+        injectGPTFunctionality();
     });
 
     mutationObserver.observe(document.body, { childList: true, subtree: true });
